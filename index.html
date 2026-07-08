@@ -1,3 +1,6 @@
+以下を **全部コピー** して、GitHubの `index.html` の中身を全部消して貼り替えてください。
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,691 +9,635 @@
   <title>石岡青果センター 在庫管理</title>
   <style>
     * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f7f5;
-      color: #1f2933;
-    }
-
-    header {
-      background: linear-gradient(135deg, #15803d, #22c55e);
-      color: white;
-      padding: 18px 14px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 13px;
-      opacity: 0.95;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    input, select, button {
-      width: 100%;
-      min-height: 42px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      padding: 8px 10px;
-      font-size: 15px;
-      background: white;
-    }
-
-    button {
-      border: none;
-      background: #16a34a;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    button.secondary {
-      background: #2563eb;
-    }
-
-    button.warning {
-      background: #f59e0b;
-    }
-
-    button.danger {
-      background: #dc2626;
-    }
-
-    button.gray {
-      background: #64748b;
-    }
-
-    button:disabled {
-      background: #cbd5e1;
-      color: #64748b;
-      cursor: not-allowed;
-    }
-
-    .role-box {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 10px;
-      align-items: end;
-    }
-
-    .notice {
-      padding: 10px;
-      background: #ecfdf5;
-      border: 1px solid #bbf7d0;
-      border-radius: 10px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .readonly {
-      background: #fff7ed;
-      border-color: #fed7aa;
-      color: #9a3412;
-    }
-
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .summary div {
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .summary span {
-      display: block;
-      font-size: 22px;
-      color: #15803d;
-      margin-top: 4px;
-    }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    th, td {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 9px 7px;
-      text-align: left;
-      font-size: 14px;
-      vertical-align: middle;
-    }
-
-    th {
-      background: #f1f5f9;
-      font-size: 13px;
-    }
-
-    tr.low {
-      background: #fff1f2;
-    }
-
-    tr.ok {
-      background: #f0fdf4;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .badge.low {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    .badge.ok {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(64px, 1fr));
-      gap: 5px;
-    }
-
-    .actions button {
-      min-height: 34px;
-      padding: 5px;
-      font-size: 12px;
-    }
-
-    @media (max-width: 760px) {
-      main {
-        padding: 10px;
-      }
-
-      .row,
-      .role-box,
-      .toolbar,
-      .summary {
-        grid-template-columns: 1fr;
-      }
-
-      table,
-      thead,
-      tbody,
-      th,
-      td,
-      tr {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tr {
-        margin-bottom: 10px;
-        border: 1px solid #e5e7eb;
-        border-radius: 12px;
-        padding: 8px;
-      }
-
-      td {
-        border: none;
-        padding: 6px 4px;
-      }
-
-      td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        display: block;
-        font-size: 12px;
-        color: #64748b;
-      }
-
-      .actions {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#f4f7f5; color:#1f2933; }
+    header { background:linear-gradient(135deg,#15803d,#22c55e); color:white; padding:16px 14px; text-align:center; position:sticky; top:0; z-index:5; box-shadow:0 2px 8px rgba(0,0,0,.15); }
+    header h1 { margin:0; font-size:21px; }
+    header p { margin:5px 0 0; font-size:13px; opacity:.95; }
+    main { max-width:1120px; margin:0 auto; padding:12px; }
+    .card { background:white; border-radius:14px; padding:14px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .hidden { display:none !important; }
+    h2 { margin:0 0 10px; font-size:18px; }
+    label { display:block; font-size:13px; font-weight:700; margin-bottom:5px; }
+    input, select, textarea, button { width:100%; min-height:42px; border-radius:10px; border:1px solid #cbd5e1; padding:8px 10px; font-size:15px; background:white; }
+    textarea { min-height:130px; line-height:1.5; }
+    button { border:none; background:#16a34a; color:white; font-weight:700; cursor:pointer; }
+    button.secondary { background:#2563eb; }
+    button.warning { background:#f59e0b; }
+    button.danger { background:#dc2626; }
+    button.gray { background:#64748b; }
+    button:disabled { background:#cbd5e1; color:#64748b; cursor:not-allowed; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .home-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .home-btn { min-height:86px; text-align:left; padding:14px; font-size:16px; }
+    .home-btn span { display:block; font-size:12px; opacity:.9; margin-top:5px; font-weight:500; }
+    .notice { padding:10px; background:#ecfdf5; border:1px solid #bbf7d0; border-radius:10px; font-size:14px; line-height:1.5; }
+    .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .summary div { background:#f8fafc; border-radius:10px; padding:10px; text-align:center; font-weight:700; }
+    .summary span { display:block; font-size:21px; color:#15803d; margin-top:4px; }
+    .nav { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:12px; }
+    .nav button { min-height:38px; font-size:12px; padding:5px; background:#0f766e; }
+    .topbar { display:flex; gap:8px; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .topbar button { width:auto; min-width:90px; }
+    table { width:100%; border-collapse:collapse; background:white; }
+    th,td { border-bottom:1px solid #e5e7eb; padding:8px 6px; text-align:left; font-size:13px; vertical-align:middle; }
+    th { background:#f1f5f9; position:sticky; top:73px; z-index:2; }
+    td input { min-height:36px; padding:6px; font-size:14px; }
+    tr.low { background:#fff1f2; }
+    tr.ok { background:#f0fdf4; }
+    tr.over { background:#eff6ff; }
+    .badge { display:inline-block; padding:3px 8px; border-radius:999px; font-size:12px; font-weight:700; }
+    .badge.low { background:#fee2e2; color:#991b1b; }
+    .badge.ok { background:#dcfce7; color:#166534; }
+    .badge.over { background:#dbeafe; color:#1e40af; }
+    .small { font-size:12px; color:#64748b; line-height:1.5; }
+    .actions { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+    .actions button { min-height:34px; padding:5px; font-size:12px; }
+    @media (max-width:760px){
+      main{padding:10px}
+      .grid2,.grid3,.grid4,.home-grid,.summary,.nav{grid-template-columns:1fr}
+      .table-wrap{overflow-x:auto}
+      table{min-width:850px}
+      th{top:0}
+      .topbar{display:block}
+      .topbar button{width:100%; margin-top:8px}
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>石岡青果センター 在庫管理</h1>
-    <p>利用者区分に応じて操作できる内容を制限します</p>
-  </header>
+<header>
+  <h1>石岡青果センター 在庫管理</h1>
+  <p id="headerSub">ログインしてください</p>
+</header>
 
-  <main>
-    <section class="card">
-      <div class="role-box">
-        <div>
-          <label for="roleSelect">利用者区分</label>
-          <select id="roleSelect">
-            <option value="admin">管理者</option>
-            <option value="field">現場社員</option>
-            <option value="buyer">仕入担当者</option>
-            <option value="viewer">その他（閲覧のみ）</option>
-          </select>
-        </div>
-        <div id="roleNotice" class="notice"></div>
-      </div>
-    </section>
-
-    <section class="card summary">
+<main>
+  <section id="loginScreen" class="card">
+    <h2>ログイン</h2>
+    <div class="grid3">
       <div>
-        登録品目数
-        <span id="totalItems">0</span>
+        <label>担当者名</label>
+        <input id="loginName" placeholder="例：飯塚" />
       </div>
       <div>
-        在庫不足
-        <span id="lowItems">0</span>
-      </div>
-      <div>
-        総在庫数
-        <span id="totalQty">0</span>
-      </div>
-    </section>
-
-    <section class="card" id="addCard">
-      <h2 style="margin:0 0 10px;font-size:18px;">品目追加</h2>
-
-      <div class="row">
-        <div>
-          <label for="nameInput">品目名</label>
-          <input id="nameInput" placeholder="例：キャベツ" />
-        </div>
-
-        <div>
-          <label for="qtyInput">現在庫</label>
-          <input id="qtyInput" type="number" min="0" value="0" />
-        </div>
-
-        <div>
-          <label for="properInput">適正在庫</label>
-          <input id="properInput" type="number" min="0" value="0" />
-        </div>
-      </div>
-
-      <div style="margin-top:10px;">
-        <button id="addBtn">品目を追加</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="toolbar">
-        <input id="searchInput" placeholder="品目名で検索" />
-
-        <select id="filterSelect">
-          <option value="all">すべて表示</option>
-          <option value="low">在庫不足のみ</option>
-          <option value="ok">適正在庫以上のみ</option>
+        <label>利用者区分</label>
+        <select id="loginRole">
+          <option value="admin">管理者</option>
+          <option value="field">現場社員</option>
+          <option value="buyer">仕入担当者</option>
+          <option value="viewer">その他（閲覧のみ）</option>
         </select>
+      </div>
+      <div>
+        <label>パスワード</label>
+        <input id="loginPass" type="password" placeholder="デモは未入力OK" />
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <button onclick="login()">ログインしてホームへ</button>
+    </div>
+    <p class="small">※GitHub Pages用の簡易ログインです。本番の利用者認証は別途必要です。</p>
+  </section>
 
-        <button class="gray" id="exportBtn">データ保存用コピー</button>
+  <section id="appScreen" class="hidden">
+    <div class="nav">
+      <button onclick="showPage('home')">ホーム</button>
+      <button onclick="showPage('bulk')">19品目一括入力</button>
+      <button onclick="showPage('move')">入庫・出庫</button>
+      <button onclick="showPage('history')">履歴</button>
+      <button onclick="showPage('notify')">通知文</button>
+    </div>
+
+    <section id="home" class="page">
+      <div class="card topbar">
+        <div>
+          <h2>ホーム</h2>
+          <div id="roleNotice" class="small"></div>
+        </div>
+        <button class="gray" onclick="logout()">ログアウト</button>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>品目名</th>
-            <th>現在庫</th>
-            <th>適正在庫</th>
-            <th>状態</th>
-            <th>最終更新</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody id="inventoryBody"></tbody>
-      </table>
+      <div class="card summary">
+        <div>登録品目数<span id="sumItems">0</span></div>
+        <div>不足品目<span id="sumLow">0</span></div>
+        <div>総ケース数<span id="sumCases">0</span></div>
+        <div>総kg数<span id="sumKg">0</span></div>
+      </div>
+
+      <div class="card home-grid">
+        <button class="home-btn" onclick="showPage('bulk')">
+          19品目を一括入力
+          <span>ケース数・kg入数・適正在庫をまとめて入力</span>
+        </button>
+        <button class="home-btn secondary" onclick="showPage('move')">
+          入庫・出庫で在庫修正
+          <span>入った分・出た分だけ入力。履歴も残ります</span>
+        </button>
+        <button class="home-btn warning" onclick="showPage('history')">
+          変更履歴を見る
+          <span>誰が・いつ・何を直したか確認</span>
+        </button>
+        <button class="home-btn gray" onclick="showPage('notify')">
+          仕入担当者への通知文
+          <span>不足品・不足kg数をLINE用文章にする</span>
+        </button>
+      </div>
     </section>
-  </main>
 
-  <script>
-    const STORAGE_KEY = "ishioka_inventory_v4";
+    <section id="bulk" class="page hidden">
+      <div class="card topbar">
+        <h2>19品目 一括在庫入力</h2>
+        <button onclick="saveBulk()">一括保存</button>
+      </div>
 
-    const permissions = {
-      admin: {
-        label: "管理者",
-        add: true,
-        receive: true,
-        ship: true,
-        adjust: true,
-        setProper: true,
-        delete: true,
-        message: "管理者：品目追加・入荷・出荷・数量変更・適正在庫設定・削除ができます。"
-      },
-      field: {
-        label: "現場社員",
-        add: false,
-        receive: true,
-        ship: true,
-        adjust: true,
-        setProper: true,
-        delete: false,
-        message: "現場社員：入荷・出荷・数量変更・適正在庫設定ができます。品目追加と削除はできません。"
-      },
-      buyer: {
-        label: "仕入担当者",
-        add: false,
-        receive: false,
-        ship: false,
-        adjust: false,
-        setProper: true,
-        delete: false,
-        message: "仕入担当者：在庫の閲覧と適正在庫設定ができます。在庫数の増減はできません。"
-      },
-      viewer: {
-        label: "その他（閲覧のみ）",
-        add: false,
-        receive: false,
-        ship: false,
-        adjust: false,
-        setProper: false,
-        delete: false,
-        message: "その他（閲覧のみ）：在庫の確認のみできます。追加・変更・削除はできません。"
-      }
-    };
+      <div class="card notice">
+        現在庫は「ケース数」で入力します。kg入数を入れると、現在庫kg・不足kgが自動計算されます。
+      </div>
 
-    let inventory = loadInventory();
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>品目</th>
+              <th>kg入数</th>
+              <th>現在庫<br>ケース</th>
+              <th>現在庫<br>kg</th>
+              <th>適正在庫<br>ケース</th>
+              <th>不足<br>ケース</th>
+              <th>不足<br>kg</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody id="bulkBody"></tbody>
+        </table>
+      </div>
+    </section>
 
-    function loadInventory() {
-      const saved = localStorage.getItem(STORAGE_KEY);
+    <section id="move" class="page hidden">
+      <div class="card">
+        <h2>入庫・出庫・数量調整</h2>
+        <div class="grid4">
+          <div>
+            <label>品目</label>
+            <select id="moveItem"></select>
+          </div>
+          <div>
+            <label>処理</label>
+            <select id="moveType">
+              <option value="入庫">入庫</option>
+              <option value="出庫">出庫</option>
+              <option value="調整">数量調整</option>
+            </select>
+          </div>
+          <div>
+            <label>ケース数</label>
+            <input id="moveQty" type="number" min="0" value="1" />
+          </div>
+          <div>
+            <label>理由・メモ</label>
+            <input id="moveMemo" placeholder="例：朝入荷、出荷分" />
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <button onclick="applyMove()">在庫を更新して履歴に残す</button>
+        </div>
+      </div>
 
-      if (saved) {
-        return JSON.parse(saved);
-      }
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>品目</th>
+              <th>kg入数</th>
+              <th>現在庫ケース</th>
+              <th>現在庫kg</th>
+              <th>適正在庫</th>
+              <th>不足kg</th>
+              <th>状態</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="stockBody"></tbody>
+        </table>
+      </div>
+    </section>
 
-      return [
-        {
-          id: crypto.randomUUID(),
-          name: "キャベツ",
-          qty: 20,
-          proper: 15,
-          updatedAt: nowText()
-        },
-        {
-          id: crypto.randomUUID(),
-          name: "にんじん",
-          qty: 8,
-          proper: 10,
-          updatedAt: nowText()
-        },
-        {
-          id: crypto.randomUUID(),
-          name: "玉ねぎ",
-          qty: 30,
-          proper: 20,
-          updatedAt: nowText()
-        }
-      ];
-    }
+    <section id="history" class="page hidden">
+      <div class="card topbar">
+        <h2>変更履歴</h2>
+        <button class="danger" onclick="clearHistory()">履歴クリア</button>
+      </div>
 
-    function saveInventory() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(inventory));
-    }
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>日時</th>
+              <th>担当者</th>
+              <th>処理</th>
+              <th>品目</th>
+              <th>変更前</th>
+              <th>変更後</th>
+              <th>差</th>
+              <th>メモ</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </section>
 
-    function nowText() {
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth() + 1).padStart(2, "0");
-      const day = String(d.getDate()).padStart(2, "0");
-      const h = String(d.getHours()).padStart(2, "0");
-      const min = String(d.getMinutes()).padStart(2, "0");
+    <section id="notify" class="page hidden">
+      <div class="card">
+        <h2>仕入担当者への通知文</h2>
+        <p class="small">
+          GitHub PagesだけではLINEへ完全自動送信はできません。<br>
+          この画面では、不足品のLINE文を自動作成し、コピーまたはLINE共有で送れます。<br>
+          入庫・出庫・調整後にも、不足がある場合はLINE共有を開くか確認します。
+        </p>
 
-      return `${y}/${m}/${day} ${h}:${min}`;
-    }
+        <button onclick="makeNotifyText(true)">不足品の通知文を作成</button>
 
-    function currentRole() {
-      return document.getElementById("roleSelect").value;
-    }
+        <div style="margin-top:10px">
+          <textarea id="notifyText"></textarea>
+        </div>
 
-    function can(action) {
-      return permissions[currentRole()][action];
-    }
+        <div class="grid2" style="margin-top:10px">
+          <button class="gray" onclick="copyNotify()">文章をコピー</button>
+          <button class="secondary" onclick="openLineShare()">LINEで共有を開く</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
 
-    function updateRoleNotice() {
-      const role = currentRole();
-      const notice = document.getElementById("roleNotice");
+<script>
+const ITEM_KEY = "ishioka_items_v8";
+const HISTORY_KEY = "ishioka_history_v8";
+const SESSION_KEY = "ishioka_session_v8";
 
-      notice.textContent = permissions[role].message;
-      notice.className = role === "viewer" ? "notice readonly" : "notice";
+const roles = {
+  admin: "管理者：全操作可",
+  field: "現場社員：入庫・出庫・調整・一括入力可",
+  buyer: "仕入担当者：閲覧・通知文確認",
+  viewer: "閲覧のみ"
+};
 
-      document.getElementById("addBtn").disabled = !can("add");
-      document.getElementById("nameInput").disabled = !can("add");
-      document.getElementById("qtyInput").disabled = !can("add");
-      document.getElementById("properInput").disabled = !can("add");
-    }
+const defaultItems = [
+  ["キャベツ", 10, 0, 5],
+  ["レタス", 10, 0, 5],
+  ["白菜", 15, 0, 4],
+  ["大根", 10, 0, 5],
+  ["にんじん", 10, 0, 5],
+  ["玉ねぎ", 20, 0, 5],
+  ["じゃがいも", 10, 0, 5],
+  ["きゅうり", 5, 0, 6],
+  ["トマト", 4, 0, 6],
+  ["ミニトマト", 3, 0, 5],
+  ["ピーマン", 4, 0, 4],
+  ["なす", 5, 0, 5],
+  ["ほうれん草", 4, 0, 5],
+  ["小松菜", 4, 0, 5],
+  ["長ねぎ", 5, 0, 5],
+  ["ブロッコリー", 6, 0, 5],
+  ["かぼちゃ", 10, 0, 3],
+  ["もやし", 10, 0, 5],
+  ["ごぼう", 10, 0, 4]
+].map((r, i) => ({
+  id: "item" + i,
+  name: r[0],
+  kgPerCase: r[1],
+  stockCase: r[2],
+  properCase: r[3]
+}));
 
-    function addItem() {
-      if (!can("add")) {
-        alert("この利用者区分では品目追加できません。");
-        return;
-      }
+let session = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+let items = JSON.parse(localStorage.getItem(ITEM_KEY) || "null") || defaultItems;
+let histories = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
 
-      const name = document.getElementById("nameInput").value.trim();
-      const qty = Number(document.getElementById("qtyInput").value || 0);
-      const proper = Number(document.getElementById("properInput").value || 0);
+function save() {
+  localStorage.setItem(ITEM_KEY, JSON.stringify(items));
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(histories));
+}
 
-      if (!name) {
-        alert("品目名を入力してください。");
-        return;
-      }
+function now() {
+  const d = new Date();
+  return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,"0")}/${String(d.getDate()).padStart(2,"0")} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+}
 
-      inventory.push({
-        id: crypto.randomUUID(),
-        name,
-        qty,
-        proper,
-        updatedAt: nowText()
+function login() {
+  session = {
+    name: document.getElementById("loginName").value.trim() || "未設定",
+    role: document.getElementById("loginRole").value
+  };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  boot();
+}
+
+function logout() {
+  localStorage.removeItem(SESSION_KEY);
+  session = null;
+  boot();
+}
+
+function boot() {
+  document.getElementById("loginScreen").classList.toggle("hidden", !!session);
+  document.getElementById("appScreen").classList.toggle("hidden", !session);
+
+  if (session) {
+    document.getElementById("headerSub").textContent = `${session.name} / ${roles[session.role]}`;
+    showPage("home");
+  } else {
+    document.getElementById("headerSub").textContent = "ログインしてください";
+  }
+}
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  render();
+}
+
+function canEdit() {
+  return session && ["admin", "field"].includes(session.role);
+}
+
+function canAdmin() {
+  return session && session.role === "admin";
+}
+
+function statusOf(item) {
+  if (item.stockCase < item.properCase) return "low";
+  if (item.stockCase > item.properCase * 1.5) return "over";
+  return "ok";
+}
+
+function statusLabel(status) {
+  if (status === "low") return "不足";
+  if (status === "over") return "多め";
+  return "OK";
+}
+
+function shortageCase(item) {
+  return Math.max(0, Number(item.properCase || 0) - Number(item.stockCase || 0));
+}
+
+function stockKg(item) {
+  return Number(item.stockCase || 0) * Number(item.kgPerCase || 0);
+}
+
+function shortageKg(item) {
+  return shortageCase(item) * Number(item.kgPerCase || 0);
+}
+
+function render() {
+  if (!session) return;
+  document.getElementById("roleNotice").textContent = roles[session.role];
+  renderSummary();
+  renderBulk();
+  renderMove();
+  renderHistory();
+  makeNotifyText(false);
+}
+
+function renderSummary() {
+  document.getElementById("sumItems").textContent = items.length;
+  document.getElementById("sumLow").textContent = items.filter(i => i.stockCase < i.properCase).length;
+  document.getElementById("sumCases").textContent = items.reduce((s, i) => s + Number(i.stockCase || 0), 0);
+  document.getElementById("sumKg").textContent = items.reduce((s, i) => s + stockKg(i), 0).toLocaleString();
+}
+
+function renderBulk() {
+  const body = document.getElementById("bulkBody");
+  body.innerHTML = "";
+
+  items.forEach(item => {
+    const s = statusOf(item);
+
+    body.insertAdjacentHTML("beforeend", `
+      <tr class="${s}">
+        <td>${item.name}</td>
+        <td><input data-id="${item.id}" data-f="kgPerCase" type="number" min="0" value="${item.kgPerCase}" ${canEdit() ? "" : "disabled"}></td>
+        <td><input data-id="${item.id}" data-f="stockCase" type="number" min="0" value="${item.stockCase}" ${canEdit() ? "" : "disabled"}></td>
+        <td>${stockKg(item).toLocaleString()}</td>
+        <td><input data-id="${item.id}" data-f="properCase" type="number" min="0" value="${item.properCase}" ${canEdit() ? "" : "disabled"}></td>
+        <td>${shortageCase(item)}</td>
+        <td>${shortageKg(item).toLocaleString()}</td>
+        <td><span class="badge ${s}">${statusLabel(s)}</span></td>
+      </tr>
+    `);
+  });
+}
+
+function saveBulk() {
+  if (!canEdit()) {
+    alert("この権限では一括入力できません。");
+    return;
+  }
+
+  let changed = false;
+
+  document.querySelectorAll("#bulkBody input").forEach(input => {
+    const item = items.find(i => i.id === input.dataset.id);
+    const field = input.dataset.f;
+    const before = Number(item[field] || 0);
+    const after = Number(input.value || 0);
+
+    if (before !== after) {
+      item[field] = after;
+      changed = true;
+
+      histories.unshift({
+        time: now(),
+        user: session.name,
+        type: "一括入力",
+        item: item.name,
+        before,
+        after,
+        diff: after - before,
+        memo: field === "kgPerCase" ? "kg入数変更" : field === "stockCase" ? "現在庫変更" : "適正在庫変更"
       });
-
-      saveInventory();
-
-      document.getElementById("nameInput").value = "";
-      document.getElementById("qtyInput").value = 0;
-      document.getElementById("properInput").value = 0;
-
-      render();
     }
+  });
 
-    function changeQty(id, type) {
-      const actionName =
-        type === "receive" ? "入荷" :
-        type === "ship" ? "出荷" :
-        "数量変更";
+  save();
+  render();
 
-      if (!can(type)) {
-        alert(`この利用者区分では${actionName}できません。`);
-        return;
-      }
+  if (changed) {
+    alert("一括保存しました。履歴に残しました。");
+    askLineNotify();
+  } else {
+    alert("変更はありませんでした。");
+  }
+}
 
-      const item = inventory.find(i => i.id === id);
+function renderMove() {
+  const select = document.getElementById("moveItem");
+  select.innerHTML = items.map(i => `<option value="${i.id}">${i.name}</option>`).join("");
 
-      if (!item) {
-        return;
-      }
+  const body = document.getElementById("stockBody");
+  body.innerHTML = "";
 
-      const input = prompt(`${item.name}の${actionName}数量を入力してください。`, "1");
+  items.forEach(item => {
+    const s = statusOf(item);
 
-      if (input === null) {
-        return;
-      }
+    body.insertAdjacentHTML("beforeend", `
+      <tr class="${s}">
+        <td>${item.name}</td>
+        <td>${item.kgPerCase}kg</td>
+        <td>${item.stockCase}</td>
+        <td>${stockKg(item).toLocaleString()}kg</td>
+        <td>${item.properCase}</td>
+        <td>${shortageKg(item).toLocaleString()}kg</td>
+        <td><span class="badge ${s}">${statusLabel(s)}</span></td>
+        <td class="actions">
+          <button onclick="quick('${item.id}','入庫')" ${canEdit() ? "" : "disabled"}>入庫</button>
+          <button class="warning" onclick="quick('${item.id}','出庫')" ${canEdit() ? "" : "disabled"}>出庫</button>
+          <button class="gray" onclick="quick('${item.id}','調整')" ${canEdit() ? "" : "disabled"}>調整</button>
+        </td>
+      </tr>
+    `);
+  });
+}
 
-      const num = Number(input);
+function quick(id, type) {
+  document.getElementById("moveItem").value = id;
+  document.getElementById("moveType").value = type;
+  showPage("move");
+}
 
-      if (!Number.isFinite(num) || num < 0) {
-        alert("0以上の数字を入力してください。");
-        return;
-      }
+function applyMove() {
+  if (!canEdit()) {
+    alert("この権限では在庫修正できません。");
+    return;
+  }
 
-      if (type === "receive") {
-        item.qty += num;
-      }
+  const item = items.find(i => i.id === document.getElementById("moveItem").value);
+  const type = document.getElementById("moveType").value;
+  const qty = Number(document.getElementById("moveQty").value || 0);
+  const memo = document.getElementById("moveMemo").value;
 
-      if (type === "ship") {
-        item.qty = Math.max(0, item.qty - num);
-      }
+  if (!item) return;
 
-      if (type === "adjust") {
-        item.qty = num;
-      }
+  const before = Number(item.stockCase || 0);
+  let after = before;
 
-      item.updatedAt = nowText();
+  if (type === "入庫") after = before + qty;
+  if (type === "出庫") after = Math.max(0, before - qty);
+  if (type === "調整") after = qty;
 
-      saveInventory();
-      render();
-    }
+  item.stockCase = after;
 
-    function setProper(id) {
-      if (!can("setProper")) {
-        alert("この利用者区分では適正在庫設定できません。");
-        return;
-      }
+  histories.unshift({
+    time: now(),
+    user: session.name,
+    type,
+    item: item.name,
+    before,
+    after,
+    diff: after - before,
+    memo
+  });
 
-      const item = inventory.find(i => i.id === id);
+  save();
+  render();
 
-      if (!item) {
-        return;
-      }
+  alert("更新しました。履歴に残しました。");
+  askLineNotify();
+}
 
-      const input = prompt(`${item.name}の適正在庫を入力してください。`, item.proper);
+function renderHistory() {
+  const body = document.getElementById("historyBody");
 
-      if (input === null) {
-        return;
-      }
+  if (!histories.length) {
+    body.innerHTML = `<tr><td colspan="8">履歴はまだありません。</td></tr>`;
+    return;
+  }
 
-      const num = Number(input);
+  body.innerHTML = histories.map(h => `
+    <tr>
+      <td>${h.time}</td>
+      <td>${h.user}</td>
+      <td>${h.type}</td>
+      <td>${h.item}</td>
+      <td>${h.before}</td>
+      <td>${h.after}</td>
+      <td>${h.diff > 0 ? "+" : ""}${h.diff}</td>
+      <td>${h.memo || ""}</td>
+    </tr>
+  `).join("");
+}
 
-      if (!Number.isFinite(num) || num < 0) {
-        alert("0以上の数字を入力してください。");
-        return;
-      }
+function clearHistory() {
+  if (!canAdmin()) {
+    alert("履歴クリアは管理者のみです。");
+    return;
+  }
 
-      item.proper = num;
-      item.updatedAt = nowText();
-
-      saveInventory();
-      render();
-    }
-
-    function deleteItem(id) {
-      if (!can("delete")) {
-        alert("この利用者区分では削除できません。");
-        return;
-      }
-
-      const item = inventory.find(i => i.id === id);
-
-      if (!item) {
-        return;
-      }
-
-      if (!confirm(`${item.name}を削除しますか？`)) {
-        return;
-      }
-
-      inventory = inventory.filter(i => i.id !== id);
-
-      saveInventory();
-      render();
-    }
-
-    function filteredInventory() {
-      const keyword = document.getElementById("searchInput").value.trim().toLowerCase();
-      const filter = document.getElementById("filterSelect").value;
-
-      return inventory.filter(item => {
-        const matchesKeyword = !keyword || item.name.toLowerCase().includes(keyword);
-        const isLow = item.qty < item.proper;
-
-        const matchesFilter =
-          filter === "all" ||
-          (filter === "low" && isLow) ||
-          (filter === "ok" && !isLow);
-
-        return matchesKeyword && matchesFilter;
-      });
-    }
-
-    function render() {
-      updateRoleNotice();
-
-      const body = document.getElementById("inventoryBody");
-      body.innerHTML = "";
-
-      const rows = filteredInventory();
-
-      rows.forEach(item => {
-        const isLow = item.qty < item.proper;
-        const tr = document.createElement("tr");
-
-        tr.className = isLow ? "low" : "ok";
-
-        tr.innerHTML = `
-          <td data-label="品目名">${escapeHtml(item.name)}</td>
-          <td data-label="現在庫">${item.qty}</td>
-          <td data-label="適正在庫">${item.proper}</td>
-          <td data-label="状態">
-            <span class="badge ${isLow ? "low" : "ok"}">
-              ${isLow ? "不足" : "OK"}
-            </span>
-          </td>
-          <td data-label="最終更新">${item.updatedAt}</td>
-          <td data-label="操作">
-            <div class="actions">
-              <button class="secondary" ${can("receive") ? "" : "disabled"} onclick="changeQty('${item.id}', 'receive')">入荷</button>
-              <button class="warning" ${can("ship") ? "" : "disabled"} onclick="changeQty('${item.id}', 'ship')">出荷</button>
-              <button ${can("adjust") ? "" : "disabled"} onclick="changeQty('${item.id}', 'adjust')">数量変更</button>
-              <button class="gray" ${can("setProper") ? "" : "disabled"} onclick="setProper('${item.id}')">適正在庫</button>
-              <button class="danger" ${can("delete") ? "" : "disabled"} onclick="deleteItem('${item.id}')">削除</button>
-            </div>
-          </td>
-        `;
-
-        body.appendChild(tr);
-      });
-
-      document.getElementById("totalItems").textContent = inventory.length;
-      document.getElementById("lowItems").textContent = inventory.filter(i => i.qty < i.proper).length;
-      document.getElementById("totalQty").textContent = inventory.reduce((sum, i) => sum + Number(i.qty || 0), 0);
-    }
-
-    function escapeHtml(text) {
-      return String(text).replace(/[&<>'"]/g, c => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        "'": "&#39;",
-        '"': "&quot;"
-      }[c]));
-    }
-
-    async function exportData() {
-      const text = JSON.stringify(inventory, null, 2);
-
-      try {
-        await navigator.clipboard.writeText(text);
-        alert("在庫データをコピーしました。メモ帳などに貼り付けて保存できます。");
-      } catch (e) {
-        alert(text);
-      }
-    }
-
-    document.getElementById("roleSelect").addEventListener("change", render);
-    document.getElementById("addBtn").addEventListener("click", addItem);
-    document.getElementById("searchInput").addEventListener("input", render);
-    document.getElementById("filterSelect").addEventListener("change", render);
-    document.getElementById("exportBtn").addEventListener("click", exportData);
-
-    saveInventory();
+  if (confirm("履歴を削除しますか？")) {
+    histories = [];
+    save();
     render();
-  </script>
+  }
+}
+
+function makeNotifyText(showAlert = true) {
+  const lows = items.filter(i => i.stockCase < i.properCase);
+
+  let text = "【在庫不足連絡】\n";
+
+  if (!lows.length) {
+    text += "現在、不足品はありません。\n";
+  } else {
+    lows.forEach(i => {
+      text += `${i.name}：不足 ${shortageCase(i)}ケース（${shortageKg(i).toLocaleString()}kg） 現在${i.stockCase}ケース / 適正${i.properCase}ケース / kg入数${i.kgPerCase}kg\n`;
+    });
+  }
+
+  text += `\n送信者：${session ? session.name : ""}\n${now()}`;
+
+  const textarea = document.getElementById("notifyText");
+  if (textarea) textarea.value = text;
+
+  if (showAlert) alert("通知文を作成しました。");
+
+  return text;
+}
+
+async function copyNotify() {
+  const text = makeNotifyText(false);
+
+  try {
+    await navigator.clipboard.writeText(text);
+    alert("コピーしました。LINEに貼り付けて送信できます。");
+  } catch (e) {
+    alert(text);
+  }
+}
+
+function openLineShare() {
+  const text = encodeURIComponent(makeNotifyText(false));
+  location.href = `https://line.me/R/share?text=${text}`;
+}
+
+function askLineNotify() {
+  const lows = items.filter(i => i.stockCase < i.properCase);
+
+  if (!lows.length) {
+    return;
+  }
+
+  makeNotifyText(false);
+
+  const ok = confirm("不足品があります。仕入担当者へのLINE共有を開きますか？");
+
+  if (ok) {
+    openLineShare();
+  }
+}
+
+boot();
+</script>
 </body>
 </html>
+```
