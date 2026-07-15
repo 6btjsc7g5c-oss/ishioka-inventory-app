@@ -162,6 +162,31 @@ body{
 @media(max-width:560px){.title{font-size:34px!important}.homeNoticeCompact{font-size:20px!important}.homePrimary .btn{font-size:28px!important}.homeMore .btn{font-size:22px!important}.homeSummary .summaryBox{min-height:112px!important}.homeSummary .summaryLabel{font-size:20px!important}.homeSummary .summaryValue{font-size:34px!important}.homeSummary .summarySub{font-size:20px!important}}
 /* ===== /SEIKA＋ final home/logo v6 ===== */
 
+
+
+/* ===== SEIKA＋ balanced size v7：大きすぎる文字を標準寄りに調整 ===== */
+.title{font-size:28px!important;line-height:1.08!important}
+.softLogoTitle{letter-spacing:.06em!important;font-weight:760!important;text-shadow:0 2px 6px rgba(16,38,83,.04)!important}
+.softLogoTitle .titleLogoPlus{font-size:1.04em!important}
+.sub{font-size:15px!important;margin-top:7px!important;color:#5f6f83!important}
+.sync{font-size:15px!important;margin-top:8px!important;color:#485568!important}
+.headin{padding:16px 16px 13px!important}
+.topBtns{margin-top:13px!important;gap:9px!important}
+.headAction{min-height:38px!important;font-size:15px!important;padding:8px 16px!important;font-weight:800!important}
+.wrap{padding:14px 16px 86px!important}
+.homeNoticeCompact{font-size:16px!important;font-weight:800!important;line-height:1.5!important;padding:14px 16px!important;margin:2px 0 16px!important;border-left-width:7px!important;border-radius:15px!important}
+.homeSummary{gap:12px!important;margin-bottom:16px!important}
+.homeSummary .summaryBox{min-height:92px!important;padding:14px 14px!important;border-radius:15px!important;box-shadow:0 4px 11px rgba(16,38,83,.10)!important}
+.homeSummary .summaryLabel{font-size:16px!important;font-weight:850!important;line-height:1.2!important}
+.homeSummary .summaryValue{font-size:30px!important;font-weight:850!important;margin-top:7px!important;line-height:1.08!important}
+.homeSummary .summarySub{font-size:16px!important;font-weight:750!important;color:#546174!important}
+.homePrimary{gap:10px!important;margin:10px 0 22px!important}
+.homePrimary .btn{min-height:60px!important;font-size:23px!important;font-weight:850!important;border-radius:13px!important;box-shadow:0 5px 12px rgba(16,38,83,.15)!important}
+.homeMoreTitle{font-size:20px!important;margin:8px 2px 10px!important}
+.homeMore{gap:11px!important}.homeMore .btn{min-height:50px!important;font-size:18px!important;font-weight:850!important;border-radius:12px!important}
+@media(max-width:560px){.title{font-size:28px!important}.sub,.sync{font-size:15px!important}.headAction{font-size:15px!important}.homeNoticeCompact{font-size:16px!important}.homeSummary .summaryBox{min-height:92px!important}.homeSummary .summaryLabel{font-size:16px!important}.homeSummary .summaryValue{font-size:30px!important}.homeSummary .summarySub{font-size:16px!important}.homePrimary .btn{font-size:23px!important;min-height:60px!important}.homeMoreTitle{font-size:20px!important}.homeMore .btn{font-size:18px!important;min-height:50px!important}}
+/* ===== /SEIKA＋ balanced size v7 ===== */
+
 </style></head><body><div id="app"></div><script>
 
 const SUPABASE_URL='https://hsuofxvcxgmsplwdigpr.supabase.co';
@@ -281,7 +306,7 @@ const latest=latestMap(),today=todayKey();
 let shortageCount=0,excessCount=0,todayEntered=0,lastInputTime='--:--',lastInputName='記録なし',lastInputAt=null;
 activeItems().forEach(it=>{const r=latest[it.id];if(r){if(isToday(r.createdAt))todayEntered++;if(!lastInputAt||new Date(r.createdAt)>new Date(lastInputAt)){lastInputAt=r.createdAt;lastInputTime=new Date(r.createdAt).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'});lastInputName=r.user||'記録なし'}const st=judge(Number(r.total||0),db.settings[it.id]);if(st==='shortage')shortageCount++;if(st==='excess')excessCount++;}});
 const missing=todayMissingItems();
-const noticeText=canWorkerReport()&&missing.length?`本日未入力：${missing.length}品<br>${esc(missing.slice(0,8).map(it=>it.name).join('、'))}${missing.length>8?' ほか':''}`:'最新の情報を確認する場合は、再読込を押してください。';
+const noticeText=canWorkerReport()&&missing.length?`本日未入力：${missing.length}品<br>${esc(missing.slice(0,5).map(it=>it.name).join('、'))}${missing.length>5?' ほか':''}`:'最新の情報を確認する場合は、再読込を押してください。';
 const simpleNotice=`<div class="homeNoticeCompact">${noticeText}</div>`;
 const lastInputHtml=`<span>${lastInputTime}</span>${lastInputName&&lastInputName!=='記録なし'?` <span class="summarySub">/ ${esc(lastInputName)}</span>`:''}`;
 if(db.role==='buyer'){
