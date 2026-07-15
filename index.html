@@ -211,6 +211,108 @@ body{
 .homePrimary .homeBtnMeshBuyer{background:linear-gradient(135deg,#d53f8c,#ed64a6)!important}
 /* ===== /SEIKA＋ home menu final v8 ===== */
 
+
+
+/* ===== SEIKA＋ dark mode readability v4：暗い文字・カードを見やすく調整 ===== */
+:root[data-theme="dark"]{
+  --bg:#0b1628;
+  --ink:#f8fafc;
+  --muted:#d7e2f2;
+  --line:#52627c;
+  --card-bg:#1b2740;
+  --input-bg:#101b31;
+  --box-bg:#111d33;
+  --head-bg:rgba(11,22,40,.97);
+}
+:root[data-theme="dark"] body{
+  background:linear-gradient(180deg,#0b1628 0%,#0f2330 100%)!important;
+  color:#f8fafc!important;
+}
+:root[data-theme="dark"] .head{
+  background:rgba(11,22,40,.97)!important;
+  border-bottom-color:#30405b!important;
+}
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .softLogoTitle,
+:root[data-theme="dark"] .seikaLogo{
+  color:#eef6ff!important;
+  text-shadow:none!important;
+  opacity:1!important;
+}
+:root[data-theme="dark"] .titleLogoPlus,
+:root[data-theme="dark"] .softLogoTitle .titleLogoPlus,
+:root[data-theme="dark"] .seikaLogo .plusWrap{
+  color:#72dfb4!important;
+  opacity:1!important;
+}
+:root[data-theme="dark"] .sub,
+:root[data-theme="dark"] .small,
+:root[data-theme="dark"] .sync,
+:root[data-theme="dark"] .label,
+:root[data-theme="dark"] .table th,
+:root[data-theme="dark"] .weeklyTable th{
+  color:#d7e2f2!important;
+  opacity:1!important;
+}
+:root[data-theme="dark"] .card{
+  background:#1b2740!important;
+  color:#f8fafc!important;
+  border-color:#52627c!important;
+  box-shadow:0 8px 18px rgba(0,0,0,.22)!important;
+}
+:root[data-theme="dark"] .box,
+:root[data-theme="dark"] .memo,
+:root[data-theme="dark"] pre,
+:root[data-theme="dark"] .previewBox{
+  background:#111d33!important;
+  color:#f8fafc!important;
+}
+:root[data-theme="dark"] .input,
+:root[data-theme="dark"] .textarea,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea{
+  background:#101b31!important;
+  color:#ffffff!important;
+  border-color:#5f718e!important;
+}
+:root[data-theme="dark"] .headAction,
+:root[data-theme="dark"] .menuBtn,
+:root[data-theme="dark"] .btn2{
+  background:#eaf1f8!important;
+  color:#071224!important;
+  border-color:#eaf1f8!important;
+}
+:root[data-theme="dark"] .homeNoticeCompact{
+  background:linear-gradient(135deg,#d8fff5,#c4f3eb)!important;
+  color:#071224!important;
+  border-left-color:#69d49f!important;
+}
+:root[data-theme="dark"] .homeSummary .summaryBox{
+  background:#f8fafc!important;
+  color:#071224!important;
+}
+:root[data-theme="dark"] .homeSummary .summaryLabel,
+:root[data-theme="dark"] .homeSummary .summaryValue,
+:root[data-theme="dark"] .homeSummary .summarySub{
+  color:#071224!important;
+}
+:root[data-theme="dark"] .weeklyTable th,
+:root[data-theme="dark"] .weeklyTable td{
+  background:#1b2740!important;
+  color:#f8fafc!important;
+  border-color:#30405b!important;
+}
+:root[data-theme="dark"] .weeklyTable td:first-child,
+:root[data-theme="dark"] .weeklyTable th:first-child{
+  background:#202d49!important;
+}
+:root[data-theme="dark"] .total,
+:root[data-theme="dark"] .line{
+  border-color:#52627c!important;
+}
+/* ===== /SEIKA＋ dark mode readability v4 ===== */
+
 </style></head><body><div id="app"></div><script>
 
 const SUPABASE_URL='https://hsuofxvcxgmsplwdigpr.supabase.co';
