@@ -23,16 +23,16 @@ body{background:radial-gradient(circle at 12% 0%,rgba(25,166,106,.20),transparen
 :root[data-theme="dark"] .loginShell{background:radial-gradient(circle at 78% 47%,rgba(113,238,175,.42),transparent 16%),radial-gradient(circle at 18% 84%,rgba(30,100,190,.28),transparent 26%),linear-gradient(180deg,#030914 0%,#071a36 46%,#040b1c 100%)!important}:root[data-theme="dark"] .opsLoginCard{background:rgba(255,255,255,.88)!important;color:#071936!important}:root[data-theme="dark"] .opsLoginLinks button{color:#071936!important}
 @media(max-width:380px){.loginShell .wrap{padding-left:16px!important;padding-right:16px!important}.opsLogoText{font-size:50px}.opsLogoSub{font-size:20px}.opsLoginHero h1{font-size:21px}.loginShell .loginFeatureGrid{gap:7px}.loginShell .loginFeatureCard{min-height:88px}.loginShell .loginFeatureCard b{font-size:15px!important}}
 
-/* ===== Login fine tune v1.22 ===== */
-/* ＋をv1.21の約2倍サイズに拡大 */
-.opsLogoPlus{font-size:1.48em!important;margin-left:8px!important;margin-top:-.48em!important;color:#a8f2c8!important;line-height:1!important;font-weight:900!important}
+/* ===== Login/Home fine tune v1.24 ===== */
+/* ログイン画面の＋は維持。ホーム見出しの＋だけ少し小さくして、ログイン画面寄りのバランスに調整 */
+.opsLogoPlus{font-size:1.48em!important;margin-left:8px!important;margin-top:-.18em!important;color:#a8f2c8!important;line-height:1!important;font-weight:900!important}
 .opsFieldIcon{display:block!important;left:24px!important;font-size:24px!important;opacity:.46!important;pointer-events:none!important}
 .opsLoginCard .input{padding-left:88px!important;padding-right:54px!important}
 #loginUser{padding-left:88px!important;text-indent:42px!important}
 #loginPass{padding-left:88px!important}
 .opsLoginLinks{display:none!important}
-.softLogoTitle .titleLogoPlus{font-size:1.48em!important;top:-.70em!important;margin-left:6px!important}
-.seikaLogo .plusWrap{font-size:1.48em!important;margin-left:8px!important;margin-top:-.44em!important}
+.softLogoTitle .titleLogoPlus{font-size:1.16em!important;top:-.34em!important;margin-left:5px!important}
+.seikaLogo .plusWrap{font-size:1.16em!important;margin-left:7px!important;margin-top:-.08em!important}
 </style><script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script><script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script><script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script></head><body><div id="app"></div><script>
 
 const SUPABASE_URL='https://hsuofxvcxgmsplwdigpr.supabase.co';
@@ -189,7 +189,29 @@ async function qrPrintLot(q,printOpts=null){
   function rows(def){return large
    ? `<div class="row"><div class="label">品名</div><div class="value item">${itemText}</div></div><div class="row"><div class="label">入荷日</div><div class="value date">${dateText}</div></div><div class="row"><div class="label">数量</div><div class="value strong">${qrLotQtyText(lot,false)}</div></div><div class="row"><div class="label">総重量</div><div class="value strong">${qrLotWeightText(lot,false)}</div></div><div class="row"><div class="label">産地</div><div class="value">${originText}</div></div><div class="row"><div class="label">仕入先</div><div class="value">${supplierText}</div></div><div class="row"><div class="label">ロット番号</div><div class="value lotno">${lotNoText}</div></div>`
    : `<div class="row"><div class="label">品名</div><div class="value item">${itemText}</div></div><div class="row"><div class="label">入荷日</div><div class="value date">${dateText}</div></div><div class="row"><div class="label">荷姿</div><div class="value">${esc(lot.container_type||'-')}</div></div><div class="row"><div class="label">数量</div><div class="value strong">${def.qtyText}</div></div><div class="row"><div class="label">量目</div><div class="value strong">${esc(lot.pack_weight||'-')}</div></div><div class="row"><div class="label">産地</div><div class="value">${originText}</div></div><div class="row"><div class="label">仕入先</div><div class="value">${supplierText}</div></div><div class="row"><div class="label">ロット番号</div><div class="value lotno">${lotNoText}${def.palletNo?' / P'+def.palletNo:''}</div></div>`}
-  async function qrDataUrlForPoster(payload){if(window.QRCode&&QRCode.toDataURL){return await QRCode.toDataURL(payload,{width:900,margin:1,errorCorrectionLevel:'M',color:{dark:'#000000',light:'#ffffff'}})}throw new Error('QR生成ライブラリを読み込めませんでした')}
+  async function qrLoadQRCodeLib(){
+  if(window.QRCode&&QRCode.toDataURL)return window.QRCode;
+  const urls=[
+    'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js',
+    'https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js'
+  ];
+  for(const src of urls){
+    try{
+      await new Promise((resolve,reject)=>{
+        const exists=[...document.scripts].some(sc=>sc.src===src);
+        if(exists){setTimeout(resolve,400);return}
+        const sc=document.createElement('script');
+        sc.src=src;sc.async=true;sc.onload=resolve;sc.onerror=reject;
+        document.head.appendChild(sc);
+        setTimeout(()=>reject(new Error('timeout')),7000);
+      });
+      if(window.QRCode&&QRCode.toDataURL)return window.QRCode;
+    }catch(e){}
+  }
+  throw new Error('QR生成ライブラリを読み込めませんでした。通信環境を確認して再度お試しください')
+}
+async function qrDataUrlForPoster(payload){const QR=await qrLoadQRCodeLib();return await QR.toDataURL(payload,{width:900,margin:1,errorCorrectionLevel:'M',color:{dark:'#000000',light:'#ffffff'}})}
   for(const def of sheetDefs){const payload=JSON.stringify({type:'qr_lot',lot_no:lot.lot_no,qr_key:lot.qr_key,...(def.palletNo?{pallet_no:def.palletNo}:{})});def.qrSrc=await qrDataUrlForPoster(payload)}
   function sheet(def){return `<main class="sheet"><section class="poster"><div class="left"><div class="brand">SEIKA＋ QRロット管理</div><div class="rows">${rows(def)}</div></div><div class="right"><img class="qr" src="${def.qrSrc}" alt="QRコード"><div class="scan">QRを読み取って<br>残数・履歴を確認</div><div class="qrLot">${lotNoText}${def.palletNo?' / パレット'+def.palletNo:''}</div></div></section></main>`}
   const sheetsHtml=sheetDefs.map(sheet).join('');
